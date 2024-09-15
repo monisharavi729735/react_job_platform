@@ -4,6 +4,10 @@ import HomeCards from './components/HomeCards'
 import JobListings from './components/JobListings'
 import ViewAllJobs from './components/ViewAllJobs'
 
+import {Route,
+        createBrowserRouter,
+        createRoutesFromElements,
+        RouterProvider} from 'react-router-dom'
 import React from 'react'
 
 const App = () => {
