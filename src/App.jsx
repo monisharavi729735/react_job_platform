@@ -15,7 +15,7 @@ import React from 'react'
 
 
 const App = () => {
-  
+
   const addJob = async(newJob) => {
     const res = await fetch('/api/jobs', {
       method: 'POST',
@@ -23,6 +23,13 @@ const App = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newJob)
+    })
+    return
+  }
+
+  const deleteJob = async(id) => {
+    const res = await fetch(`/api/jobs/${id}`, {
+      method: 'DELETE'
     })
     return
   }
@@ -34,7 +41,7 @@ const App = () => {
         <Route path='/jobs' element={<JobsPage />} />
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob} />} />
         <Route path='*' element={<NotFoundPage />} />
-        <Route path="/job/:id" element={<SingleJobPage />} loader={jobLoader}/>
+        <Route path="/job/:id" element={<SingleJobPage deleteJob={deleteJob}/>} loader={jobLoader}/>
       </Route>
     )
   );
